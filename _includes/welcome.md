@@ -1,32 +1,32 @@
 
 
-# Introducing Shiny
+# Shiny简介
 
-Shiny is a new package from RStudio that makes it incredibly easy to build interactive web applications with R.
+Shiny是RStudio公司开发的新包，有了它，可以用R语言轻松开发交互式web应用。
 
-For an introduction and live examples, visit the [Shiny homepage](http://www.rstudio.com/shiny).
+想查看更详细的介绍和实例，请访问[Shiny的官方主页](http://www.rstudio.com/shiny)。
 
-### Features
+### 特性
 
-* Build useful web applications with only a few lines of code&mdash;no JavaScript required.
-* Shiny applications are automatically "live" in the same way that spreadsheets are live. Outputs change instantly as users modify inputs, without requiring a reload of the browser.
-* Shiny user interfaces can be built entirely using R, or can be written directly in HTML, CSS, and JavaScript for more flexibility.
-* Works in any R environment (Console R, Rgui for Windows or Mac, ESS, StatET, RStudio, etc.)
-* Attractive default UI theme based on [Twitter Bootstrap](http://twitter.github.com/bootstrap).
-* A highly customizable slider widget with built-in support for animation.
-* Pre-built output widgets for displaying plots, tables, and printed output of R objects.
-* Fast bidirectional communication between the web browser and R using the [websockets](http://illposed.net/websockets.html) package.
-* Uses a [reactive](http://en.wikipedia.org/wiki/Reactive_programming) programming model that eliminates messy event handling code, so you can focus on the code that really matters.
-* Develop and redistribute your own Shiny widgets that other developers can easily drop into their own applications (coming soon!).
+* 只用几行代码就可以构建有用的web应用程序&mdash;不需要用JavaScript。
+* Shiny应用程序会自动刷新计算结果，这与电子表格实时计算的效果类似。 当用户修改输入时，输出值自动更新，而不需要在浏览器中手动刷新。
+* Shiny用户界面可以用纯R语言构建，如果想更灵活，可以直接用HTML、CSS和JavaScript来写。
+* 可以在任何R环境中运行（R命令行、Windows或Mac中的Rgui、ESS、StatET、RStudio等）
+* 基于[Twitter Bootstrap](http://twitter.github.com/bootstrap)的默认UI主题很吸引人。
+* 高度定制化的滑动条小工具（slider widget），内置了对动画的支持。
+* 预先构建有输出小工具，用来展示图形、表格以及打印输出R对象。
+* 采用[websockets](http://illposed.net/websockets.html)包，做到浏览器和R之间快速双向通信。
+* 采用[被动式（reactive）](http://en.wikipedia.org/wiki/Reactive_programming)编程模型，摒弃了繁杂的 事件处理代码，这样你可以集中精力于真正关心的代码上。
+* 开发和分发你自己的Shiny小工具，其他开发者也可以非常容易地加到自己的应用中（即将面市！）
 
-### Installation
+### 安装
 
-Shiny is available on CRAN, so you can install it in the usual way from your R console:
+Shiny可以从CRAN获取， 所以你可以用通常的方式来安装，在R的命令行里输入：
 
-```
+```r
 install.packages("shiny")
 ```
 
 ### Let's Go!
 
-This tutorial covers the basics of Shiny and provides detailed examples of using much of its capabilities. Click the Next button to get started and say hello to Shiny!
+本教程涵盖了Shiny的基础知识，提供了详尽的案例来展示它的各种特性。点击Next按钮对Shiny说hello吧！
