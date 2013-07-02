@@ -1,18 +1,18 @@
 
 ![Hello Shiny Screenshot](screenshots/hello-shiny.png)
 
-The Hello Shiny example is a simple application that generates a random distribution with a configurable number of observations and then plots it. To run the example, type: 
+Hello Shiny是个简单的应用程序， 这个程序可以生成正态分布的随机数，随机数个数可以由用户定义，并且绘制这些随机数的直方图. 要运行这个例子，只需键入： 
 
-{% highlight console %}
-> library(shiny)
-> runExample("01_hello")
+{% highlight r %}
+library(shiny)
+runExample("01_hello")
 {% endhighlight %}
 
-Shiny applications have two components: a user-interface definition and a server script. The source code for both of these components is listed below. 
+Shiny应用程序分为两个部分：用户界面定义和服务端脚本。这两部分的源代码将在下面列出。
 
-In subsequent sections of the tutorial we'll break down all of the code in detail and explain the use of "reactive" expressions for generating output. For now, though, just try playing with the sample application and reviewing the source code to get an initial feel for things. Be sure to read the comments carefully.
+在教程的后续章节，我们将解释代码的细节并讲解如何用“被动式”表达式来生成输出。现在，就尝试运行一下例子程序，浏览一下源代码，以获得对shiny的初始印象。也请认真阅读注释。
 
-The user interface is defined in a source file named ui.R:
+用户界面是在源文件ui.R中定义的：
 
 #### ui.R
 
@@ -42,7 +42,7 @@ shinyUI(pageWithSidebar(
 ))
 {% endhighlight %}
 
-The server-side of the application is shown below. At one level, it's very simple--a random distribution with the requested number of observations is generated, and then plotted as a histogram. However, you'll also notice that the function which returns the plot is wrapped in a call to `renderPlot`. The comment above the function explains a bit about this, but if you find it confusing, don't worry--we'll cover this concept in much more detail soon.
+下面列表了服务端的代码。从某种程度上说，它很简单——生成给定个数的随机变量， 然后将直方图画出来。不过，你也注意到了，返回图形的函数被 `renderPlot`包裹着。函数上面的注释对此做出了一些解释，不过如果你觉得还是搞不明白，不用担心——后面我们将更进一步解释这个概念。
 
 #### server.R
 
@@ -68,4 +68,4 @@ shinyServer(function(input, output) {
 })
 {% endhighlight %}
 
-The next example will show the use of more input controls, as well as the use of reactive functions to generate textual output.
+下一个例子将展示其他输入控件的用法，以及生成文本输出的被动式函数的用法。
