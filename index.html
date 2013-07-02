@@ -52,6 +52,10 @@ title: "中文教程：用R构建Shiny应用程序"
    code, pre{ font-size: 18px; }
    
    h1{ margin-bottom:20px }
+   
+   ul.nav > li.nav-header{font-size: 17px; }
+   
+   ul.nav-list li{font-size: 15px;}
       
 </style>
 <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
@@ -128,8 +132,10 @@ hljs.initHighlightingOnLoad();
 <div class="navbar-inner">
   <div class="container">
    
-    <a class="brand" href="#">{{ page.title }}</a>
+    <a class="brand" href="#" target="_self">{{ page.title }}</a>
+    <a class="btn btn-primary pull-right" href="http://rstudio.github.io/shiny/tutorial" target="_blank">英文版教程</a>
    <a class="btn btn-primary pull-right" href="https://github.com/rstudio/shiny" target="_blank">Shiny on GitHub</a>
+   
   </div>
 </div>
 </div>
@@ -454,11 +460,13 @@ $('a#next').click(function(e) {
    e.preventDefault();
    location.href = $('.nav li.active').nextAll('li:not(.nav-header)').first().find('a').attr('href');
    manageNextPrev();
+   window.scrollTo(0,10);
 });
 $('a#previous').click(function(e) {
    e.preventDefault();
    location.href = $('.nav li.active').prevAll('li:not(.nav-header)').first().find('a').attr('href');
    manageNextPrev();
+   window.scrollTo(0,10);
 });
 
 $(window).hashchange(function() {
@@ -472,6 +480,18 @@ $(window).hashchange(function() {
 });
 $(window).hashchange();
 </script>
+
+<script type="text/javascript">    
+        $(document).ready(function(){ 
+            $('.tab-pane a').each(function(index,element){
+                var href = $(this).attr('href');
+                if(href.indexOf('#') == 0){
+                    $(this).attr('target','_self');
+                }
+            });           
+        });	
+</script>
+
 
 </body>
 </html>
