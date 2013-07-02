@@ -1,12 +1,12 @@
 ---
-title: "教程：用R构建Shiny应用程序"
+title: "中文教程：用R构建Shiny应用程序"
 ---
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>教程：用R构建Shiny应用程序</title>
+<title>{{ page.title }}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <base target="_blank"/>
 
@@ -16,7 +16,7 @@ title: "教程：用R构建Shiny应用程序"
    body {
      padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
      font-family: 'Source Sans Pro', sans-serif;
-     font-size: 15px;
+     font-size: 18px;
      line-height: 1.5;
    }
    .responsive-image {
@@ -46,6 +46,12 @@ title: "教程：用R构建Shiny应用程序"
      margin-top: 30px;
      margin-bottom: 10px;
    }
+   
+   li{ line-height: 25px;}
+   
+   code, pre{ font-size: 18px; }
+   
+   h1{ margin-bottom:20px }
       
 </style>
 <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
@@ -103,7 +109,7 @@ hljs.initHighlightingOnLoad();
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-20375833-5']);
+  _gaq.push(['_setAccount', 'UA-27377274-1']);
   _gaq.push(['_trackPageview']);
 
   (function() {
@@ -122,7 +128,7 @@ hljs.initHighlightingOnLoad();
 <div class="navbar-inner">
   <div class="container">
    
-    <a class="brand" href="#">Tutorial: Building 'Shiny' Applications with R</a>
+    <a class="brand" href="#">{{ page.title }}</a>
    <a class="btn btn-primary pull-right" href="https://github.com/rstudio/shiny" target="_blank">Shiny on GitHub</a>
   </div>
 </div>
@@ -150,13 +156,13 @@ hljs.initHighlightingOnLoad();
    </li>
    <li class="nav-header">构建App</li>
    <li>
-      <a target="_self" href="#ui-and-server">UI &amp; 服务器</a>
+      <a target="_self" href="#ui-and-server">UI&amp;服务器</a>
    </li>
    <li>
-      <a target="_self" href="#inputs-and-outputs">Inputs &amp; Outputs</a>
+      <a target="_self" href="#inputs-and-outputs">输入&amp;输出</a>
    </li>
    <li>
-      <a target="_self" href="#run-and-debug">运行 &amp; 调试</a>
+      <a target="_self" href="#run-and-debug">运行&amp;调试</a>
    </li>
    <li class="nav-header">Tooling Up</li>
    <li>
@@ -178,7 +184,7 @@ hljs.initHighlightingOnLoad();
       <a target="_self" href="#html-ui">HTML UI</a>
    </li>
    <li>
-      <a target="_self" href="#dynamic-ui">Dynamic UI</a>
+      <a target="_self" href="#dynamic-ui">动态UI</a>
    </li>
    <li class="nav-header">高级Shiny技巧</li>
    <li>
@@ -200,19 +206,19 @@ hljs.initHighlightingOnLoad();
    <li>
       <a target="_self" href="#isolation">Isolation</a>
    </li>
-   <li class="nav-header">Deploying and Sharing Apps</li>
+   <li class="nav-header">部署和分享Apps</li>
    <li>
-      <a target="_self" href="#deployment-web">Deploying Over the Web</a>
+      <a target="_self" href="#deployment-web">通过web部署</a>
    </li>
    <li>
-      <a target="_self" href="#deployment-local">Sharing Apps to Run Locally</a>
+      <a target="_self" href="#deployment-local">分享Apps以供本地运行</a>
    </li>
-   <li class="nav-header">Extending Shiny</li>
+   <li class="nav-header">扩展Shiny</li>
    <li>
-      <a target="_self" href="#building-inputs">Building Inputs</a>
+      <a target="_self" href="#building-inputs">构建输入</a>
    </li>
    <li>
-      <a target="_self" href="#building-outputs">Building Outputs</a>
+      <a target="_self" href="#building-outputs">构建输出</a>
    </li>
 <!--
    <li>
