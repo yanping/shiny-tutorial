@@ -1,18 +1,18 @@
 
 ![Tabsets Screenshot](screenshots/shiny-text.png)
 
-The Shiny Text application demonstrates printing R objects directly, as well as displaying data frames using HTML tables. To run the example, type: 
+Shiny Text这个应用程序展示的是直接打印R对象，也可以用HTML表格展示数据框。要运行例子程序，只需键入： 
 
 {% highlight console %}
 > library(shiny)
 > runExample("02_text")
 {% endhighlight %}
 
-The first example had a single numeric input specified using a slider and a single plot output. This example has a bit more going on: two inputs and two types of textual output.
+前面那个例子里用一个滑动条来输入数值，并且输出图形。而这个例子更进了一步：有两个输入，以及两种类型的文本输出。
 
-If you try changing the number of observations to another value, you'll see a demonstration of one of the most important attributes of Shiny applications: inputs and outputs are connected together "live" and changes are propagated immediately (like a spreadsheet). In this case, rather than the entire page being reloaded, just the table view is updated when the number of observations change.
+如果你改变观测个数， 将会发现Shiny应用程序的一大特性：输入和输出是结合在一起的，并且"实时"更新运算结果（就像Excel一样）。 在这个例子中，当观测个数发生变化时，只有表格更新，而不需要重载整个页面。
 
-Here is the user interface definition for the application. Notice in particular that the `sidebarPanel` and `mainPanel` functions are now called with two arguments (corresponding to the two inputs and two outputs displayed):
+下面是用户界面定义的代码。请注意，`sidebarPanel`和`mainPanel`函数的调用中有两个参数（对应于两个输入和两个输出）
 
 #### ui.R
 
@@ -44,12 +44,12 @@ shinyUI(pageWithSidebar(
 ))
 {% endhighlight %}
 
-The server side of the application has also gotten a bit more complicated. Now we create:
+服务端的程序要稍微复杂一点。现在，我们创建：
 
-* A reactive expression to return the dataset corresponding to the user choice
-* Two other rendering expressions (`renderPrint` and `renderTable`) that return the `output$summary` and `output$view` values
+* 一个被动表达式来返回用户选择的相应数据集
+* 还有两个渲染表达式（ rendering expressions，分别是`renderPrint` 和`renderTable`），以返回 `output$summary` 的 `output$view` 的值。
 
-These expressions work similarly to the `renderPlot` expression used in the first example: by declaring a rendering expression you tell Shiny that it should only be executed when its dependencies change. In this case that's either one of the user input values (`input$dataset` or `input$n`).
+这些表达式和第一个例子中的 `renderPlot` 运作方式类似：通过声明渲染表达式，你也就告诉了shiny，一旦渲染表达式所依赖的值发生改变，表达式就会执行。在这里例子中是两个用户输入值的任意一个（`input$dataset` 或 `input$n`）。
 
 #### server.R
 
@@ -82,4 +82,4 @@ shinyServer(function(input, output) {
 {% endhighlight %}
 
 
-We've introduced more use of reactive expressions but haven't really explained how they work yet. The next example will start with this one as a baseline and expand significantly on how reactive expressions work in Shiny.
+我们已经介绍了一些被动表达式的用法，但是并没有真正解释它们是如何运作的。下一个例子会以此为基础进一步讲解Shiny中被动式表达式的用法。
