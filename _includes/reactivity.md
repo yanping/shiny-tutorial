@@ -2,30 +2,30 @@
 
 ![Reactivity Screenshot](screenshots/reactivity.png)
 
-The Reactivity application is very similar to Hello Text, but goes into much more detail about reactive programming concepts. To run the example, type: 
+Reactivity的示例程序与Hello Text很相似，但是用到了反应式编程里更多细节的概念，要运行该例子，请键入： 
 
 {% highlight console %}
 > library(shiny)
 > runExample("03_reactivity")
 {% endhighlight %}
 
-The previous examples have given you a good idea of what the code for Shiny applications looks like. We've explained a bit about reactivity, but mostly glossed over the details. In this section, we'll explore these concepts more deeply. If you want to dive in and learn about the details, see the Understanding Reactivity section, starting with [Reactivity Overview](#reactivity-overview).
+前面几个例子给你了个初步印象——Shiny应用程序的代码长成什么样子。前面解释了反应式编程的一点概念，不过略过了大部分细节。 在本节，我们会更进一步讲解这些细节。如果你想更深入学习这些细节，请看《理解反应式设计》这节，从[反应式设计概述](#reactivity-overview)开始。
 
-### What is Reactivity?
+### 什么是反应式设计
 
-The Shiny web framework is fundamentally about making it easy to wire up *input values* from a web page, making them easily available to you in R, and have the results of your R code be written as *output values* back out to the web page.
+Shiny的web框架从本质上说是使从页面中获取*输入值*并传递给R变得更容易，然后把R代码的结果以*输出值*的形式返回给页面。
 
     input values => R code => output values
 
-Since Shiny web apps are interactive, the input values can change at any time, and the output values need to be updated immediately to reflect those changes.
+因为Shiny程序是交互式的，输入值可以随时改变，输出值也应该立即更新，以反映输入输入值的改变。
 
-Shiny comes with a **reactive programming** library that you will use to structure your application logic. By using this library, changing input values will naturally cause the right parts of your R code to be reexecuted, which will in turn cause any changed outputs to be updated.
+Shiny中有**反应式编程**的库，你可以用它来定义你的应用程序逻辑。使用这个库，改变输入值会自动引发R代码中相应的部分重新执行，反过来会更新输出结果。
 
-### Reactive Programming Basics
+### 反应式编程基础
 
-Reactive programming is a coding style that starts with **reactive values**--values that change over time, or in response to the user--and builds on top of them with **reactive expressions**--expressions that access reactive values and execute other reactive expressions.
+反应式编程是种编程风格，这种风格以**反应值**开始，**反应值**是随时间变化的值，或者由用户输入的值，在反应值之上绑定有**反应表达式**（reactive expression），反应表达式会接收到反应值并执行其他反应表达式。
 
-What's interesting about reactive expressions is that whenever they execute, they automatically keep track of what reactive values they read and what reactive expressions they invoked. If those "dependencies" become out of date, then they know that their own return value has also become out of date. Because of this dependency tracking, changing a reactive value will automatically instruct all reactive expressions that directly or indirectly depended on that value to re-execute.
+反应表达式有趣的地方在于，当它执行的时候，会自动跟踪读取到的反应值以及调用的其他反应表达式。如果反应表达式所依赖的反应值和反应表达式发生了改变，那么该反应表达式的返回值也应该变化（原文是If those “dependencies” become out of date, then they know that their own return value has also become out of date）。因为有这种跟踪机制，所以改变一个反应值会自动引发依赖于它的反应表达式重新执行。
 
 The most common way you'll encounter reactive values in Shiny is using the `input` object. The `input` object, which is passed to your `shinyServer` function, lets you access the web page's user input fields using a list-like syntax. Code-wise, it looks like you're grabbing a value from a list or data frame, but you're actually reading a reactive value. No need to write code to monitor when inputs change--just write reactive expression that read the inputs they need, and let Shiny take care of knowing when to call them.
 
@@ -51,7 +51,7 @@ output$view <- renderTable({
 
 This expression will be re-executed (and its output re-rendered in the browser) whenever either the `datasetInput` or `input$obs` value changes.
 
-### Back to the Code
+### 回到代码上
 
 Now that we've taken a deeper loop at some of the core concepts, let's revisit the source code and try to understand what's going on in more depth. The user interface definition has been updated to include a text-input field that defines a caption. Other than that it's very similar to the previous example:
 
@@ -93,7 +93,7 @@ shinyUI(pageWithSidebar(
 {% endhighlight %}
 
 
-### Server Script
+### 服务端脚本
 
 The server script declares the `datasetInput` reactive expression as well as three reactive output values. There are detailed comments for each definition that describe how it works within the reactive system:
 

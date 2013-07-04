@@ -16,8 +16,8 @@ Shiny是RStudio公司开发的新包，有了它，可以用R语言轻松开发�
 * 高度定制化的滑动条小工具（slider widget），内置了对动画的支持。
 * 预先构建有输出小工具，用来展示图形、表格以及打印输出R对象。
 * 采用[websockets](http://illposed.net/websockets.html)包，做到浏览器和R之间快速双向通信。
-* 采用[被动式（reactive）](http://en.wikipedia.org/wiki/Reactive_programming)编程模型，摒弃了繁杂的 事件处理代码，这样你可以集中精力于真正关心的代码上。
-* 开发和分发你自己的Shiny小工具，其他开发者也可以非常容易地加到自己的应用中（即将面市！）
+* 采用[反应式（reactive）](http://en.wikipedia.org/wiki/Reactive_programming)编程模型，摒弃了繁杂的 事件处理代码，这样你可以集中精力于真正关心的代码上。
+* 开发和发布你自己的Shiny小工具，其他开发者也可以非常容易地将它加到自己的应用中（即将面市！）
 
 ### 安装
 

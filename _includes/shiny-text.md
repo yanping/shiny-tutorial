@@ -46,7 +46,7 @@ shinyUI(pageWithSidebar(
 
 服务端的程序要稍微复杂一点。现在，我们创建：
 
-*  一个被动表达式来返回用户选择的相应数据集。
+*  一个反应性表达式来返回用户选择的相应数据集。
 *  还有两个渲染表达式（rendering expressions，分别是`renderPrint` 和`renderTable`），以返回 `output$summary` 的 `output$view` 的值。 
 
 这些表达式和第一个例子中的 `renderPlot` 运作方式类似：通过声明渲染表达式，你也就告诉了shiny，一旦渲染表达式所依赖的值（在这里例子中是两个用户输入值的任意一个：`input$dataset` 或 `input$n`）发生改变，表达式就会执行。。
@@ -82,4 +82,4 @@ shinyServer(function(input, output) {
 {% endhighlight %}
 
 
-我们已经介绍了一些被动表达式的用法，但是并没有真正解释它们是如何运作的。下一个例子会以此为基础进一步讲解Shiny中被动式表达式的用法。
+我们已经介绍了一些反应性表达式的用法，但是并没有真正解释它们是如何运作的。下一个例子会以此为基础进一步讲解Shiny中反应性表达式的用法。
