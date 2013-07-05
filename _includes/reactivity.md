@@ -27,9 +27,9 @@ Shiny中有**反应式编程**的库，你可以用它来定义你的应用程�
 
 反应表达式有趣的地方在于，当它执行的时候，会自动跟踪读取到的反应值以及调用的其他反应表达式。如果反应表达式所依赖的反应值和反应表达式发生了改变，那么该反应表达式的返回值也应该变化（原文是If those “dependencies” become out of date, then they know that their own return value has also become out of date）。因为有这种跟踪机制，所以改变一个反应值会自动引发依赖于它的反应表达式重新执行。
 
-The most common way you'll encounter reactive values in Shiny is using the `input` object. The `input` object, which is passed to your `shinyServer` function, lets you access the web page's user input fields using a list-like syntax. Code-wise, it looks like you're grabbing a value from a list or data frame, but you're actually reading a reactive value. No need to write code to monitor when inputs change--just write reactive expression that read the inputs they need, and let Shiny take care of knowing when to call them.
+在shiny中使用反应值时，最常见的方式是使用`input`对象。`input`对象会被传递给`shinyServer`函数中，让你可以用类似列表的语法来访问网页上的输入值。从代码上看，你好像是从列表或者数据框里读取了值，但实际上你读取的是反应值。你不必写监测输入值变化的代码，只需要写反应表达式来读取所需的反应值，Shiny会处理好什么时候调用它们。
 
-It's simple to create reactive expression: just pass a normal expression into `reactive`. In this application, an example of that is the expression that returns an R data frame based on the selection the user made in the input form:
+创建反应表达式很简单，只需要把一个正常的表达式传递给`reactive`函数就行。在本节的示例程序中，下面这个简单的反应表达式的功能是，基于用户在表单中选择的选项来返回R数据框。 
 
 {% highlight r %}
 datasetInput <- reactive({
