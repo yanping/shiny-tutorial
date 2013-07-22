@@ -1,16 +1,16 @@
 
 ## UI & Server
 
-Let's walk through the steps of building a simple Shiny application. A Shiny application is simply a directory containing a user-interface definition, a server script, and any additional data, scripts, or other resources required to support the application. 
+我们来把构建简单的Shiny应用程序的流程走一遍。shiny程序是个简单的目录，里面包括用户接口的定义、服务端脚本以及起支持作用的数据、脚本和其他资源。
 
-To get started building the application, create a new empty directory wherever you'd like, then create empty `ui.R` and `server.R` files within in. For purposes of illustration we'll assume you've chosen to create the application at ~/shinyapp:
+构建应用程序之初，先建一个空目录，在这个目录里创建空文件`ui.R` 和 `server.R`。为了便于解释，我们假定你选择在~/shinyapp创建程序：
 
 <pre><code>~/shinyapp
 |-- ui.R
 |-- server.R
 </code></pre>
 
-Now we'll add the minimal code required in each source file. We'll first define the user interface by calling the function `pageWithSidebar` and passing it's result to the `shinyUI` function:
+现在我们将在每个源文件中添加所需的最少代码。先定义用户接口，调用函数`pageWithSidebar`并传递它的结果到`shinyUI`函数：
 
 #### ui.R
 
@@ -30,9 +30,9 @@ shinyUI(pageWithSidebar(
 {% endhighlight %}
 
 
-The three functions `headerPanel`, `sidebarPanel`, and `mainPanel` define the various regions of the user-interface. The application will be called "Miles Per Gallon" so we specify that as the title when we create the header panel. The other panels are empty for now.
+三个函数 `headerPanel`、`sidebarPanel`和 `mainPanel` 定义了用户接口的不同区域。 程序将会叫做 "Miles Per Gallon"，所以在创建header panel的时候我们把它设置为标题。其他panel到目前为止还是空的。
 
-Now let's define a skeletal server implementation. To do this we call `shinyServer` and pass it a function that accepts two parameters: `input` and `output`:
+我们来定义一个简单的服务端实现。我们调用`shinyServer`并传递给它一个函数，用来接收两个参数：`input`和`output`
 
 #### server.R
 
@@ -45,18 +45,18 @@ shinyServer(function(input, output) {
 })
 {% endhighlight %}
 
+服务端程序现在还是空的，不过之后我们会用它来定义输入和输出的关系。
 
-Our server function is empty for now but later we'll use it to define the relationship between our inputs and outputs.
-
-We've now created the most minimal possible Shiny application. You can run the application by calling the `runApp` function as follows:
+我们来创建一个最小的Shiny应用程序。你可以调用`runApp`函数来运行这个程序：
 
 {% highlight console %}
 > library(shiny)
 > runApp("~/shinyapp")
 {% endhighlight %}
 
-If everything is working correctly you'll see the application appear in your browser looking something like this: 
+如果一切正常，你会在浏览器里看到如下图所示的应用程序：
 
 ![MPG Screenshot](screenshots/mpg-empty.png)
 
-We now have a running Shiny application however it doesn't do much yet. In the next section we'll complete the application by specifying the user-interface and implementing the server script.
+我们创建了一个可运行的shiny程序，尽管它还做不了什么。
+下一节，我们会完善用户接口并实现服务端脚本，来完成这个应用程序。
