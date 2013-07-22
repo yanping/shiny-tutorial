@@ -41,7 +41,7 @@ datasetInput <- reactive({
 {% endhighlight %}
 
 
-To turn reactive values into outputs that can viewed on the web page, we assigned them to the `output` object (also passed to the `shinyServer` function). Here is an example of an assignment to an output that depends on both the `datasetInput` reactive expression we just defined, as well as `input$obs`:
+为了将反应值转化为可以在网页上呈现的输出，我们要将它们赋值给`output`对象(同样传递给`shinyServer`函数)。下面是个赋值给输出值的例子，输出值依赖于我们刚才定义的反应表达式`datasetInput`，以及`input$obs`：
 
 {% highlight r %}
 output$view <- renderTable({
@@ -49,11 +49,11 @@ output$view <- renderTable({
 })
 {% endhighlight %}
 
-This expression will be re-executed (and its output re-rendered in the browser) whenever either the `datasetInput` or `input$obs` value changes.
+不管是 `datasetInput` 还是`input$obs`，一旦它们的值发生改变，上面这个表达式将会重新执行（它的输出也会在浏览器里重新渲染）。
 
 ### 回到代码上
 
-Now that we've taken a deeper loop at some of the core concepts, let's revisit the source code and try to understand what's going on in more depth. The user interface definition has been updated to include a text-input field that defines a caption. Other than that it's very similar to the previous example:
+现在我们已经对一些核心概念有了更多了解，我们再来看看源代码，并尝试更深层次理解。用户接口的定义中，增加了来用定义说明文字（caption）的文本输入框，尽管它与前一个例子还是很相似。
 
 #### ui.R
 
@@ -95,7 +95,7 @@ shinyUI(pageWithSidebar(
 
 ### 服务端脚本
 
-The server script declares the `datasetInput` reactive expression as well as three reactive output values. There are detailed comments for each definition that describe how it works within the reactive system:
+服务端脚本声明了反应表达式`datasetInput`和三个反应输出值。下面有每个定义的详细注释描述了在反应式系统中是如何运作的：
 
 #### server.R
 
@@ -152,4 +152,4 @@ shinyServer(function(input, output) {
 })
 {% endhighlight %}
 
-We've reviewed a lot code and covered a lot of conceptual ground in the first three examples. The next section focuses on the mechanics of building a Shiny application from the ground up and also covers tips on how to run and debug Shiny applications.
+在前三个例子中，我们查看了一些代码，也解释了不少概念。下一节将重点讲解从头开始构建shiny程序的机制，也会讲解如何运行和调试shiny程序。
