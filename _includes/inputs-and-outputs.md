@@ -41,7 +41,7 @@ shinyUI(pageWithSidebar(
 
 ### 创建服务端脚本
 
-Next we need to define the server-side of the application which will accept inputs and compute outputs. Our server.R file is shown below, and illustrates some important concepts:
+我们需要定义程序的服务端脚本，用来接收输入，并计算输出。文件server.R如下所示，它说明了下面几个重要的概念：
 * Accessing input using slots on the `input` object and generating output by assigning to slots on the `output` object.
 * Initializing data at startup that can be accessed throughout the lifetime of the application.
 * Using a reactive expression to compute a value shared by more than one output.
