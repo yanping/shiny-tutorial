@@ -1,12 +1,12 @@
 
 
-## Inputs & Outputs
+## 输入和输出
 
-### Adding Inputs to the Sidebar
+### 在Sidebar上添加输入
 
-The application we'll be building uses the mtcars data from the R datasets package, and allows users to see a box-plot that explores the relationship between miles-per-gallon (MPG) and three other variables (Cylinders, Transmission, and Gears). 
+我们要使用R内置的datasets包中的mtcars数据构建程序， 允许用户查看箱线图来研究英里每加仑（miles-per-gallon，简称MPG） 和其他三个变量（气缸，变速器，齿轮）之间的关系。
 
-We want to provide a way to select which variable to plot MPG against as well as provide an option to include or exclude outliers from the plot. To do this we'll add two elements to the sidebar, a `selectInput` to specify the variable and a `checkboxInput` to control display of outliers. Our user-interface definition looks like this after adding these elements:
+我们想提供一种方式来选择绘制MPG与哪个变量的图形，也提供了个选项，可选择绘图时包含或剔除异常值。为了完成这个目标，我们要往sidebar上加两个元素，一个是`selectInput`，用来指定变量，另一个是`checkboxInput`，用来控制是否显示异常值。添加这些元素后的用户接口定义如下所示：
 
 #### ui.R
 
@@ -34,13 +34,12 @@ shinyUI(pageWithSidebar(
 ))
 {% endhighlight %}
 
-
-If you run the application again after making these changes you'll see the two user-inputs we defined displayed within the sidebar:
+如果在做了这些修改之后你再运行该程序，你会在sidebar看到两个用户输入：
 
 ![MPG Screenshot](screenshots/mpg-with-inputs.png)
 
 
-### Creating the Server Script
+### 创建服务端脚本
 
 Next we need to define the server-side of the application which will accept inputs and compute outputs. Our server.R file is shown below, and illustrates some important concepts:
 * Accessing input using slots on the `input` object and generating output by assigning to slots on the `output` object.
@@ -90,7 +89,7 @@ shinyServer(function(input, output) {
 The use of `renderText` and `renderPlot` to generate output (rather than just assigning values directly) is what makes the application reactive. These reactive wrappers return special expressions that are only re-executed when their dependencies change. This behavior is what enables Shiny to automatically update output whenever input changes.
 
 
-### Displaying Outputs
+### 展示输出
 
 The server script assigned two output values: `output$caption` and `output$mpgPlot`. To update our user interface to display the output we need to add some elements to the main UI panel. 
 
@@ -132,5 +131,5 @@ Running the application now shows it in its final form including inputs and dyna
 
 ![MPG Screenshot](screenshots/mpg-with-outputs.png)
 
-Now that we've got a simple application running we'll probably want to make some changes. The next topic covers the basic cycle of editing, running, and debugging Shiny applications.
+现在我们完成了一个简单的程序，接下来可能想做一些修改。下一个主题将介绍编辑、运行、调试shiny程序的流程。
 
