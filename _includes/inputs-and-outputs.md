@@ -42,13 +42,14 @@ shinyUI(pageWithSidebar(
 ### 创建服务端脚本
 
 我们需要定义程序的服务端脚本，用来接收输入，并计算输出。文件server.R如下所示，它说明了下面几个重要的概念：
-* Accessing input using slots on the `input` object and generating output by assigning to slots on the `output` object.
-* Initializing data at startup that can be accessed throughout the lifetime of the application.
-* Using a reactive expression to compute a value shared by more than one output.
 
-The basic task of a Shiny server script is to define the relationship between inputs and outputs. Our script does this by accessing inputs to perform computations and by assigning reactive expressions to output slots. 
+* 使用`input`对象的组件来访问输入，并通过向`output`对象的组件赋值来生成输出。
+* 在启动的时候初始化的数据可以在应用程序的整个生命周期中被访问
+* 使用反应表达式来计算被多个输出共享的值
 
-Here is the source code for the full server script (the inline comments explain the implementation technqiues in more detail):
+shiny服务端的脚本的基本任务是定义输入和输出之间的关系。脚本访问输入值，然后计算，接着向输出的组件赋以反应表达式。
+
+下面是全部服务端脚本的代码（注释更详尽地讲解了实现技巧）：
 
 #### server.R
 
@@ -86,14 +87,13 @@ shinyServer(function(input, output) {
 })
 {% endhighlight %}
 
-The use of `renderText` and `renderPlot` to generate output (rather than just assigning values directly) is what makes the application reactive. These reactive wrappers return special expressions that are only re-executed when their dependencies change. This behavior is what enables Shiny to automatically update output whenever input changes.
-
+shiny用`renderText`和`renderPlot`生成输出（而不是直接赋值），这样做让程序成为反应式的。这一层封装返回特殊的表达式，只有当其所依赖的值改变的时候才会重新执行。这就使shiny在输入值发生改变时自动更新输出。
 
 ### 展示输出
 
-The server script assigned two output values: `output$caption` and `output$mpgPlot`. To update our user interface to display the output we need to add some elements to the main UI panel. 
+服务端脚本给两个输出赋值：`output$caption`和`output$mpgPlot`。为了让用户接口能显示输出，我们需要在主UI面板上添加一些元素。
 
-In the updated user-interface definition below you can see that we've added the caption as an h3 element and filled in it's value using the `textOutput` function, and also rendered the plot by calling the `plotOutput` function:
+在下面修改后的用户接口定义中，你可以看到，我们用h3元素添加了说明文字，并用`textOutput`函数添加了其中的文字，还调用了`plotOutput`函数渲染了图形。
 
 #### ui.R
 
@@ -126,10 +126,8 @@ shinyUI(pageWithSidebar(
 ))
 {% endhighlight %}
 
-
-Running the application now shows it in its final form including inputs and dynamically updating outputs:
+运行应用程序，就可以显示它的最终形式，包括输入和动态更新的输出：
 
 ![MPG Screenshot](screenshots/mpg-with-outputs.png)
 
 现在我们完成了一个简单的程序，接下来可能想做一些修改。下一个主题将介绍编辑、运行、调试shiny程序的流程。
-
