@@ -21,14 +21,16 @@ R -e "shiny::runApp('~/shinyapp')"
 
 ### 实时重载
 
-When you make changes to your underlying user-interface definition or server script you don't need to stop and restart your application to see the changes. Simply save your changes and then reload the browser to see the updated application in action.
+当你修改用户接口定义或者服务端脚本的时候，你不必关闭并重启应用程序以查看更改后的效果。只需保存更改，重新加载浏览器就可以查看更新后的程序。
 
-One qualification to this: when a browser reload occurs Shiny explicitly checks the timestamps of the ui.R and server.R files to see if they need to be re-sourced. If you have other scripts or data files that change Shiny isn't aware of those, so a full stop and restart of the application is necessary to see those changes reflected.
+有个条件是这样的：当浏览器重新加载，会引发shiny检查ui.R和server.R的时间戳，以判断这两个文件是否需要重新加载。如果其他脚本或数据文件发生改变，shiny是不会知道的，所以这时要关闭并重启应用程序来查看相应的更改。
+
 
 ### 调试技巧
 
 #### 打印 
-There are several techniques available for debugging Shiny applications. The first is to add calls to the [cat](http://stat.ethz.ch/R-manual/R-devel/library/base/html/cat.html) function which print diagnostics where appropriate. For example, these two calls to cat print diagnostics to standard output and standard error respectively:
+
+有好几种技巧可以用来调试shiny程序。第一种是增加[cat](http://stat.ethz.ch/R-manual/R-devel/library/base/html/cat.html)函数的调用，这样可以在适当的地方打印诊断信息。例如，下面两条调用就是用来打印标准输出和标准错误的信息：
 
 {% highlight r %}
 cat("foo\n")
@@ -36,16 +38,17 @@ cat("bar\n", file=stderr())
 {% endhighlight %}
 
 #### 使用调试浏览器
-The second technique is to add explicit calls to the [browser](http://stat.ethz.ch/R-manual/R-devel/library/base/html/browser.html) function to interrupt execution and inspect the environment where browser was called from. Note that using browser requires that you start the application from an interactive session (as opposed to using R -e as described above).
 
-For example, to unconditionally stop execution at a certain point in the code:
+第二种方式是增加[browser](http://stat.ethz.ch/R-manual/R-devel/library/base/html/browser.html)函数的显式调用，来中断程序执行，并查看调用browser时所处的环境。注意，使用browser需要你从交互式会话中启动应用程序（这与上面提到的用R -e的方式相反）。
+
+例如，在代码的某个地方无条件地停止执行：
 
 {% highlight r %}
 # Always stop execution here
 browser() 
 {% endhighlight %}
 
-You can also use this technique to stop only on certain conditions. For example, to stop the MPG application only when the user selects "Transmission" as the variable:
+你也可以用这种方法在特定条件下停止执行代码。例如，当用户选择"Transmission"作为变量的时候停止MPG程序：
 
 {% highlight r %}
 # Stop execution when the user selects "am"
@@ -53,21 +56,21 @@ browser(expr = identical(input$variable, "am"))
 {% endhighlight %}
 
 #### 建立一个自定义错误处理器
-You can also set the R &quot;error&quot; option to automatically enter the browser when an error occurs:
+你可以设置R的 &quot;error&quot; 选项，使得当错误发生的时候，自动进入调试浏览器：
 
 {% highlight r %}
 # Immediately enter the browser when an error occurs
 options(error = browser)
 {% endhighlight %}
 
-Alternatively, you can specify the [recover](http://stat.ethz.ch/R-manual/R-devel/library/utils/html/recover.html) function as your error handler, which will print a list of the call stack and allow you to browse at any point in he stack:
+另一种方法，你可以设置[recover](http://stat.ethz.ch/R-manual/R-devel/library/utils/html/recover.html)函数做为错误处理器，它可以打印一个调用列表，并允许你在堆栈的任何位置查看：
 
 {% highlight r %}
 # Call the recover function when an error occurs
 options(error = recover)
 {% endhighlight %}
 
-If you want to set the error option automatically for every R session, you can do this in your .Rprofile file as described in this article on [R Startup](http://stat.ethz.ch/R-manual/R-patched/library/base/html/Startup.html).
+如果你想自动地对每个会话设置error选项，你可以用[R Startup](http://stat.ethz.ch/R-manual/R-patched/library/base/html/Startup.html)这篇文章描述的方法来修改.Rprofile文件。
 
 
 
