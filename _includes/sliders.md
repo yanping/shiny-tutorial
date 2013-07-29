@@ -1,7 +1,7 @@
 
 ![Sliders Screenshot](screenshots/sliders.png)
 
-The Sliders application demonstrates the many capabilities of slider controls, including the ability to run an animation sequence. To run the example type: 
+sliders这个例子展示的是滑动条（slider）控件的功能，包括产生动画效果。要运行这个例子，只需键入：
 
 {% highlight console %}
 > library(shiny)
@@ -9,15 +9,15 @@ The Sliders application demonstrates the many capabilities of slider controls, i
 {% endhighlight %}
 
 
-### Customizing Sliders
+### 定制化滑动条
 
-Shiny slider controls are extremely capable and customizable. Features supported include:
+slider控件功能非常强大，同时也可以定制化。它支持的特性有：
 
-* The ability to input both single values and ranges
-* Custom formats for value display (e.g for currency)
-* The ability to animate the slider across a range of values
+* 既可以输入单个的值，也可以输入一个范围。
+* 自定义显示值的格式（比如，货币格式）
+* 让滑动条在一定范围内自动滑动
 
-Slider controls are created by calling the `sliderInput` function. The ui.R file demonstrates using sliders with a variety of options:
+滑动条控件是由调用`sliderInput`函数生成的。ui.R文件展示的是多种选项的滑动条。
 
 #### ui.R
 
@@ -62,9 +62,9 @@ shinyUI(pageWithSidebar(
 {% endhighlight %}
 
 
-### Server Script
+### 服务端脚本
 
-The server side of the Slider application is very straightforward: it creates a data frame containing all of the input values and then renders it as an HTML table:
+slider应用程序的服务端是很简单的：它创建了个数据框，用来存放所有输入值，然后把它渲染到HTML表中：
 
 #### server.R
 
@@ -72,6 +72,7 @@ The server side of the Slider application is very straightforward: it creates a 
 library(shiny)
 
 # Define server logic for slider examples
+
 shinyServer(function(input, output) {
 
   # Reactive expression to compose a data frame containing all of the values
