@@ -2,7 +2,7 @@
 
 ![Tabsets Screenshot](screenshots/tabsets.png)
 
-The Tabsets application demonstrates using tabs to organize output. To run the example type: 
+示例程序Tabsets展示的是如何用选项卡（tabs）来组织输出。要运行这个例子，就执行下面的命令： 
 
 {% highlight console %}
 > library(shiny)
@@ -10,11 +10,11 @@ The Tabsets application demonstrates using tabs to organize output. To run the e
 {% endhighlight %}
 
 
-### Tab Panels
+### 选项卡面板（Tab Panels）
 
-Tabsets are created by calling the `tabsetPanel` function with a list of tabs created by the `tabPanel` function. Each tab panel is provided a list of output elements which are rendered vertically within the tab.
+选项卡（tabsets）是由调用`tabsetPanel`函数创建的，在这函数中，又需要用`tabPanel`函数创建选项（tab）列表。每一个选项卡面板是由输出元素组成的，这些元素在选项卡中垂直排列。
 
-In this example we updated our Hello Shiny application to add a summary and table view of the data,  each rendered on their own tab. Here is the revised source code for the user-interface:
+在这个例子中，我们修改了原来的Hello Shiny程序，增加了一个摘要和数据表，两者分别渲染到它们各自的选项卡中。下面就是用户接口的代码：
 
 #### ui.R
 
@@ -58,9 +58,9 @@ shinyUI(pageWithSidebar(
 {% endhighlight %}
 
 
-### Tabs and Reactive Data
+### 选项卡和反应式数据（Reactive Data）
 
-Introducing tabs into our user-interface underlines the importance of creating reactive expressions for shared data. In this example each tab provides its own view of the dataset. If the dataset is expensive to compute then our user-interface might be quite slow to render. The server script below demonstrates how to calculate the data once in a reactive expression and have the result be shared by all of the output tabs:
+将选项卡引入用户接口的时候，应该强调为共享数据创建反应表达式的重要性。在这个例子中，每个选项卡都提供了对数据集的查看方式。如果对数据集的处理比较费时，那么用户接口的定义可能变得很慢。下面的服务端脚本展示的是如何用反应表达式一次性计算数据，其结果被三个选项卡所共享。
 
 #### server.R
 
