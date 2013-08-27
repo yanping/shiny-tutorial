@@ -2,22 +2,22 @@
 
 ![More Widgets Screenshot](screenshots/more-widgets.png)
 
-The More Widgets application demonstrates the help text and submit button widgets as well as the use of embedded HTML elements to customize formatting. To run the example type: 
+More widgets这个应用程序展示的是帮助文本和提交按钮，以及用嵌入HTML元素的方式来自定义格式。要运行例子，请键入：
 
 {% highlight r %}
 > library(shiny)
 > runExample("07_widgets")
 {% endhighlight %}
 
-### UI Enhancements
+### UI增强
 
-In this example we update the Shiny Text application with some additional controls and formatting, specifically:
+在这个例子里，我们更新了Shiny Text程序，增加了控件，调整了格式，特别地：
 
-* We added a `helpText` control to provide additional clarifying text alongside our input controls.
-* We added a `submitButton` control to indicate that we don't want a live connection between inputs and outputs, but rather to wait until the user clicks that button to update the output. This is especially useful if computing output is computationally expensive.
-* We added `h4` elements (heading level 4) into the output pane. Shiny offers a variety of functions for including HTML elements directly in pages including headings, paragraphics, links, and more.
+* 增加了`helpText`控件，用以在输入控件旁边添加解释文本。
+* 增加了 `submitButton`控件，用来表示我们不想让输入和输出进行实时连接，而是想让用户点击按钮后才更新输出。这一特点在当计算过程非常复杂时是很有用的。
+* 在输出面板上增加了 `h4` 元素（四级标题）。Shiny提供了大量的函数可直接往页面上添加HTML元素，包括标题、段落、链接等等。
 
-Here is the updated source code for the user-interface:
+下面更新后的用户接口界面的代码：
 
 #### ui.R
 
@@ -64,9 +64,9 @@ shinyUI(pageWithSidebar(
 {% endhighlight %}
 
 
-### Server Script
+### 服务端脚本
 
-All of the changes from the original Shiny Text application were to the user-interface, the server script remains the same:
+和原来的Shiny Text的程序比，所有的变化都是在用户接口界面部分，服务端脚本保持不变。
 
 #### server.R
 
