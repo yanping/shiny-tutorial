@@ -1,19 +1,20 @@
 ![Uploading Files Screenshot](screenshots/uploads.png)
 
-Sometimes you'll want users to be able to upload their own data to your application. Shiny makes it easy to offer your users file uploads straight from the browser, which you can then access from your server logic.
+有时你希望用户能上传数据到你的应用程序里。shiny使得用户可以很容易地用浏览器上传数据，然后服务端的逻辑可以访问这些数据。
 
-**Important notes:**
-* This feature does not work with Internet Explorer 9 and earlier (not even with Shiny Server).
-* By default, Shiny limits file uploads to 5MB per file. You can modify this limit by using the `shiny.maxRequestSize` option. For example, adding `options(shiny.maxRequestSize=30*1024^2)` to the top of `server.R` would increase the limit to 30MB.
+**重要注解：**
 
-To run this example, type:
+* 这一特性不支持IE9或更早版本（shiny server也同样不支持它们）
+* 默认情况下，shiny上传的每个文件最大不能超过5MB。你可以通过`shiny.maxRequestSize`选项来修改这个限制。例如，在`server.R`的最前面加上 `options(shiny.maxRequestSize=30*1024^2)`，可以把文件大小限制提高到30MB。
+
+要运行这个例子，可键入：
 
 {% highlight console %}
 > library(shiny)
 > runExample("09_upload")
 {% endhighlight %}
 
-File upload controls are created by using the `fileInput` function in your `ui.R` file. You access the uploaded data similarly to other types of input: by referring to <code>input$<i>inputId</i></code>. The `fileInput` function takes a `multiple` parameter that can be set to `TRUE` to allow the user to select multiple files, and an `accept` parameter can be used to give the user clues as to what kind of files the application expects.
+文件上传控件是`ui.R`文件中的 `fileInput`来创建的，访问上传的数据也跟访问其他类型的输入相类似：用<code>input$<i>inputId</i></code>来引用。`fileInput`函数的`multiple`参数取`TRUE`可以允许用户选择多个文件，而`accept`参数可以提示用户应用程序希望接收什么样的文件类型。
 
 #### ui.R
 
@@ -63,6 +64,6 @@ shinyServer(function(input, output) {
 })
 {% endhighlight %}
 
-This example receives a file and attempts to read it as comma-separated values using `read.csv`, then displays the results in a table. As the comment in `server.R` indicates, `inFile` is either `NULL` or a dataframe that contains one row per uploaded file. In this case, `fileInput` did not have the `multiple` parameter so we can assume there is only one row.
+上面这个接收了一个文件，然后用`read.csv`函数读取这个csv文件，最后用表格来展示所有的数据。正如`server.R`的注释展示的那样，`inFile`要么是`NULL`，要么是包含上传文件信息的数据框，每一行对应的一个文件。在本例中，`fileInput`没有`multiple`参数，这样它就只有一行。
 
-The file contents can be accessed by reading the file named by the `datapath` column. See the `?fileInput` help topic to learn more about the other columns that are available.
+文件内容可以通过`datapath`提供的文件名来访问。查看`?fileInput`获取更多帮助信息。
