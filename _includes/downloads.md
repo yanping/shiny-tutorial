@@ -1,15 +1,15 @@
 ![Downloading Data Screenshot](screenshots/downloads.png)
 
-The examples so far have demonstrated outputs that appear directly in the page, such as plots, tables, and text boxes. Shiny also has the ability to offer file downloads that are calculated on the fly, which makes it easy to build data exporting features.
+到目前为止的例子中，输出结果都是直接出现在页面上，比如绘图、表格、文本框。Shiny也提供了下载计算结果文件的特性，这能可以很容易地构建报告系统。
 
-To run the example below, type:
+要运行下面的例子，键入：
 
 {% highlight console %}
 > library(shiny)
 > runExample("10_download")
 {% endhighlight %}
 
-You define a download using the `downloadHandler` function on the server side, and either `downloadButton` or `downloadLink` in the UI:
+要定义文件下载的功能，在服务端用`downloadHandler`使用函数，在UI端使用`downloadButton`或 `downloadLink`。
 
 #### ui.R
 
@@ -51,10 +51,10 @@ shinyServer(function(input, output) {
 })
 {% endhighlight %}
 
-As you can see, `downloadHandler` takes a `filename` argument, which tells the web browser what filename to default to when saving. This argument can either be a simple string, or it can be a function that returns a string (as is the case here).
+正如你看的那样，`downloadHandler`接收参数`filename`，这个参数告诉浏览器保存时默认的文件名，它可以是简单的字符串，也可以是返回字符串的函数（如上例）。
 
-The `content` argument must be a function that takes a single argument, the file name of a non-existent temp file. The `content` function is responsible for writing the contents of the file download into that temp file.
+`content`参数必须是包含一个参数的函数，这个参数是临时文件的文件名。`content`函数的作用是往要下载的临时文件里写内容。
 
-Both the `filename` and `content` arguments can use reactive values and expressions (although in the case of `filename`, be sure your argument is an actual function; `filename = paste(input$dataset, '.csv')` is not going to work the way you want it to, since it is evaluated only once, when the download handler is being defined).
+`filename`和 `content`参数可以使用反应值或表达式（尽管在上面例子中的`filename`，参数是实际的函数，`filename = paste(input$dataset, '.csv')`不会按你想的那样运行，因为当下载处理器定义时，它只计算一次）。
 
-Generally, those are the only two arguments you'll need. There is an optional `contentType` argument; if it is `NA` or `NULL`, Shiny will attempt to guess the appropriate value based on the filename. Provide your own content type string (e.g. `"text/plain"`) if you want to override this behavior.
+一般来说，只有两个参数你需要。有个可选参数`contentType`，如果它是`NA`或 `NULL`，shiny会基于文件名猜测一个合适的值。如果你想改变这一行为，可以提供一个类型的字符串（比如，`"text/plain"`）。
