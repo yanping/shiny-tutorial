@@ -1,8 +1,8 @@
 ## Sharing Apps to Run Locally
 
-Once you've written your Shiny app, you can distribute it for others to run on their own computers&mdash;they can download and run Shiny apps with a single R command. This requires that they have R and Shiny installed on their computers.
+如果你写了自己的shiny应用，你可以分派你的应用给其它人以使其在自己的电脑上运行该应用&mdash;他们可以用一条R命令来下载和运行Shiny应用，这要求他们在自己的电脑上安装了R和Shiny包。
 
-If you want your Shiny app to be accessible over the web, so that users only need a web browser, see <a href="#deployment-web">Deploying Shiny Apps over the Web</a>.
+如果你想要让你的Shiny应用可以通过网页访问，这样其它用户只需要通过浏览器就可以访问，查看<a href="#deployment-web">基于Web布署Shiny应用</a>
 
 Here are some ways to deliver Shiny apps to run locally:
 
